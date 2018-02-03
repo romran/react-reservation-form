@@ -7,26 +7,50 @@ import today from './dateConverter';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+const size = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, '>30']
 
-const orders = [1, 2, 3];
+let orders = [];
+
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
-
 const onSubmit = async values => {
     await sleep(300)
     console.log(JSON.stringify(values, 0, 2))
-    orders.push(values)
-    console.log("Orders".orders)
+    orders.push({ date: values.date, time: values.time })
+    //console.log(orders)
 }
 
 const Error = ({ name }) => (
     <Field
         name={name}
-        subscribe={{ touched: true, error: true }}
-        render={({ meta: { touched, error } }) =>
-            touched && error ? <span>{error}</span> : null
+        subscribe={{ touched: true, error: true, }}
+        render={({ meta: { touched, error, dirty } }) =>
+           touched && error ? <span>{error}</span> : null
         }
     />
 )
+
+const PartyError = ({ name }) => (
+    <Field
+        name={name}
+        subscribe={{ touched: true, error: true, dirty:true }}
+        render={({ meta: { touched, error, dirty } }) =>
+           dirty && error ? <span>{error}</span> : null
+        }
+    />
+)
+
+const normalizePhone = value => {
+    if (!value) return value
+    const onlyNums = value.replace(/[^\d]/g, '')
+    if (onlyNums.length <= 3) return onlyNums
+    if (onlyNums.length <= 7)
+        return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3)}`
+    return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)} ${onlyNums.slice(
+        6,
+        10
+    )}`
+}
+
 
 const required = value => (value ? undefined : 'Required')
 
@@ -36,15 +60,31 @@ const App = () => (
         <Wizard
             initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' }}
             onSubmit={onSubmit}>
-            <Wizard.Page>
+            <Wizard.Page
+
+                validate={values => {
+                    const errors = {}
+                    if ((orders.find(o => o.date === values.date)) && (orders.find(o => o.time === values.time))) {
+                        errors.date = 'Date already taken'
+                        errors.time = 'Time already taken'
+                    }
+                    if (values.partySize === '>30') {
+                        errors.partySize = 'Contact'
+                    }
+                    return errors
+                }}
+
+            >
                 <div>
                     <label>Party size</label>
                     <Field name="partySize" component="select">
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        {size.map(val => (
+                            <option value={val} key={val}>
+                                {val}
+                            </option>
+                        ))}
                     </Field>
-                    <Error name="partySize" />
+                    <PartyError name="partySize" />
                 </div>
 
                 <div>
@@ -132,8 +172,9 @@ const App = () => (
                     <Field
                         name="phoneNumber"
                         component="input"
-                        type="number"
-                        placeholder="Phone Number"
+                        type="text"
+                        parse={normalizePhone}
+                        placeholder="(000) 000 0000"
                         validate={required}
                     />
                     <Error name="phoneNumber" />
