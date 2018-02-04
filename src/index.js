@@ -3,8 +3,10 @@ import { render } from 'react-dom'
 import { Field } from 'react-final-form'
 import Wizard from './Wizard'
 import today from './dateConverter';
+import { Select } from 'semantic-ui-react'
+ 
 
-import './index.css';
+import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const size = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, '>30']
@@ -24,7 +26,7 @@ const Error = ({ name }) => (
         name={name}
         subscribe={{ touched: true, error: true, }}
         render={({ meta: { touched, error, dirty } }) =>
-           touched && error ? <span>{error}</span> : null
+            touched && error ? <span className='error-span'></span> : null
         }
     />
 )
@@ -32,9 +34,9 @@ const Error = ({ name }) => (
 const PartyError = ({ name }) => (
     <Field
         name={name}
-        subscribe={{ touched: true, error: true, dirty:true }}
+        subscribe={{ touched: true, error: true, dirty: true }}
         render={({ meta: { touched, error, dirty } }) =>
-           dirty && error ? <span>{error}</span> : null
+            dirty && error ? <p className='reservation-error'><span>Groups larger than 30 should call at <span className='reservation-number'>{error}</span> for reservations</span></p> : null
         }
     />
 )
@@ -51,17 +53,21 @@ const normalizePhone = value => {
     )}`
 }
 
+ 
 
 const required = value => (value ? undefined : 'Required')
 
 const App = () => (
-    <div>
-        <h2>Wizard Form</h2>
+    <div className='main-form'>
+        <div className='form-title'>
+            <h1>Jun Park QA</h1>
+            <p>2202 N Irving Street, Allentown, PA 18109</p>
+            <p> PHONE: (800) 201-0461</p>
+        </div>
         <Wizard
             initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' }}
             onSubmit={onSubmit}>
             <Wizard.Page
-
                 validate={values => {
                     const errors = {}
                     if ((orders.find(o => o.date === values.date)) && (orders.find(o => o.time === values.time))) {
@@ -69,47 +75,62 @@ const App = () => (
                         errors.time = 'Time already taken'
                     }
                     if (values.partySize === '>30') {
-                        errors.partySize = 'Contact'
+                        errors.partySize = '(800) 201-0461'
                     }
                     return errors
                 }}
-
             >
-                <div>
-                    <label>Party size</label>
-                    <Field name="partySize" component="select">
-                        {size.map(val => (
-                            <option value={val} key={val}>
-                                {val}
-                            </option>
-                        ))}
-                    </Field>
-                    <PartyError name="partySize" />
+
+                <div className='form-title-inner'>
+                    <h2>Make a <span>Reservation!</span></h2>
+                    <p>Select the party size, date and time for your reservation.</p>
                 </div>
 
-                <div>
-                    <label>Date</label>
-                    <Field
-                        name="date"
-                        component="input"
-                        type="date"
-                        min={today}
-                        // placeholder="First Name"
-                        validate={required}
-                    />
-                    <Error name="date" />
+                <div className='input-wrapper'>
+                    <div className='input-container'>
+                        <label>Party size</label>
+                        <Field name="partySize" component="select">
+                            {size.map(val => (
+                                <option value={val} key={val}>
+                                    {val}
+                                </option>
+                            ))}
+                        </Field>
+                       
+                    </div>
+
+                    <div className='input-container'>
+                        <label>Date</label>
+                        <Field
+                            name="date"
+                            component="input"
+                            type="date"
+                            className="date"
+                            required="required"
+                            min={today}
+                            // placeholder="First Name"
+                            validate={required}
+                        />
+                        <Error name="date" />
+                    </div>
+
+                    <div className='input-container'>
+                        <label>Time</label>
+                        <Field
+                            name="time"
+                            component="input"
+                            type="time"
+                            className="time"
+                            // placeholder="First Name"
+                            validate={required}
+                        />
+                        <Error name="time" />
+                    </div>
                 </div>
 
-                <div>
-                    <label>Time</label>
-                    <Field
-                        name="time"
-                        component="input"
-                        type="time"
-                        // placeholder="First Name"
-                        validate={required}
-                    />
-                    <Error name="time" />
+                <div className='notes'>
+                    <p><PartyError name="partySize" /></p>
+                    <p>All time is displayed in EST timezone.</p>
                 </div>
 
             </Wizard.Page>

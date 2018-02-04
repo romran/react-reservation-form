@@ -57,7 +57,7 @@ export default class Wizard extends React.Component {
   handleSubmit = values => {
     const { children, onSubmit } = this.props
     const { page } = this.state
-   // const isLastPage = page === React.Children.count(children) - 1
+    // const isLastPage = page === React.Children.count(children) - 1
     //console.log(page);
     if (page === 1) {
       this.last();
@@ -77,46 +77,48 @@ export default class Wizard extends React.Component {
     const activePage = React.Children.toArray(children)[page]
     const isLastPage = page === React.Children.count(children) - 1
     return (
-      <Form
-        initialValues={values}
-        validate={this.validate}
-        onSubmit={this.handleSubmit}
-      >
-        {({ handleSubmit, reset, submitting, values }) => (
-          <form onSubmit={handleSubmit}
-          >
-            {activePage}
-            <div className="buttons">
-              {page === 1 && (
-                <button type="button" onClick={this.previous}>
-                  « Previous
+      <div className='form-wrapper'>
+        <Form
+          initialValues={values}
+          validate={this.validate}
+          onSubmit={this.handleSubmit}
+        >
+          {({ handleSubmit, reset, submitting, values }) => (
+            <form onSubmit={handleSubmit}
+            >
+              {activePage}
+              <div className="buttons">
+                {page === 1 && (
+                  <button type="button" onClick={this.previous}>
+                    « Previous
                 </button>
 
-              )}
-              {page === 1 && (
-                <button type="submit" disabled={submitting}>
-                  Submit
+                )}
+                {page === 1 && (
+                  <button type="submit" disabled={submitting}>
+                    Submit
                 </button>
-              )}
+                )}
 
-          
-              {page === 0 && <button type="submit">Next »</button>}
-              {isLastPage && (
-                <button onClick={reset} type="submit">
-                  Home
+
+                {page === 0 && <button className='check-button' type="submit">Check Availability</button>}
+                {isLastPage && (
+                  <button onClick={reset} type="submit">
+                    Home
                 </button>
-              )}
+                )}
 
-              {isLastPage && (<pre>{JSON.stringify(values, 0, 2)}</pre>)}
+                {isLastPage && (<pre>{JSON.stringify(values, 0, 2)}</pre>)}
 
-            </div>
+              </div>
 
 
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
+              {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
 
-          </form>
-        )}
-      </Form>
+            </form>
+          )}
+        </Form>
+      </div>
     )
   }
 }

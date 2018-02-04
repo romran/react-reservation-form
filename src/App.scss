@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+$blue: #00c0f4;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('assets/images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+
+#copyright {
+    color: white;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    span {
+        font-weight: 700;
+    }
+}
+
+
+.main-form {
+    width: 450px;
+    padding: 20px;
+    height: auto;
+    .form-title {
+        margin-bottom: 60px;
+        h1 {
+            line-height: 1;
+            margin: 0;
+            color: $blue; 
+            font-size: 32px;
+            font-weight: 700;
+            padding-bottom: 15px;
+        }
+        p {
+            margin: 0;
+            text-transform: uppercase;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+    .form-wrapper {
+        position: relative;
+        padding-bottom: 125px;
+        .form-title-inner {
+            color: white;
+            line-height: 1;
+            padding-bottom: 30px;
+            h2 {
+                font-weight: 400;
+                font-size: 32px;
+                margin: 0;
+                padding-bottom: 25px;
+                span {
+                    font-weight: 700;
+                }
+            }
+            p {
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+        .input-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            .input-container {
+                position: relative;
+                z-index: 3;
+                label {
+                    color: white;
+                    margin-bottom: 10px;
+                }
+                select,input {
+                   height: 40px; 
+                   font-family: 'Open Sans', sans-serif;
+                   font-size: 14px;
+                   font-weight: 400;
+                   color: #555555;
+                }
+                select {
+                    width: 120px;
+                    padding-left: 50px;
+                }
+                .date {
+                    width: 140px;
+                    padding-left: 30px;
+                    height: 40px;
+                    border: none;
+                }
+                .time {
+                    width: 120px;
+                    padding-left: 22px;
+                    height: 40px;
+                    border: none;
+                }
+
+
+                input[type=time]::-webkit-inner-spin-button{
+                    padding-top: 20px;
+                    //-webkit-appearance: none;
+                }
+
+                input[type="time"]:before {
+                    color: transparent;
+                    background: none;
+                    display: block;
+                    font-family: 'FontAwesome';
+                    content: '\f017';
+                    /* This is the calendar icon in FontAwesome */
+                    width: 15px;
+                    height: 20px;
+                    position: absolute;
+                    top: 49px;
+                    right: 30px;
+                    color: #999;
+                  }
+
+
+                input[type=date]::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                }
+
+                input[type="date"]::-webkit-calendar-picker-indicator {
+                    color: transparent;
+                    background: none;
+                    z-index: 1;
+                }
+                
+                input[type="date"]:before {
+                    color: transparent;
+                    background: none;
+                    display: block;
+                    font-family: 'FontAwesome';
+                    content: '\f073';
+                    /* This is the calendar icon in FontAwesome */
+                    width: 15px;
+                    height: 20px;
+                    position: absolute;
+                    top: 49px;
+                    right: 6px;
+                    color: #999;
+                  }
+
+                .error-span {
+                    z-index: -1;
+                    display: block;
+                    position: absolute;
+                    width: calc(100% + 4px);
+                    height: 44px;
+                    bottom: -2px;
+                    left: -2px; 
+                    background-color: red;
+                  //  border: 2px solid red;
+
+                }
+
+                height: 76px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between
+            }
+        }
+        .buttons {
+            margin-top: 25px;
+            .check-button {
+                width: 100%;
+                height: 35px;
+                border: none;
+                outline: none;
+                color: white;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                background-color: $blue;    
+            }
+        }
+        .notes {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: white;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+           .reservation-error{
+               border: 2px solid $blue;
+               padding: 5px;
+            }
+             .reservation-number {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+button {
+    background-color: red
+}

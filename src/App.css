@@ -1,28 +1,163 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+#copyright {
   color: white;
-}
+  position: absolute;
+  bottom: 30px;
+  left: 30px; }
+  #copyright span {
+    font-weight: 700; }
 
-.App-title {
-  font-size: 1.5em;
-}
+.main-form {
+  width: 450px;
+  padding: 20px;
+  height: auto; }
+  .main-form .form-title {
+    margin-bottom: 60px; }
+    .main-form .form-title h1 {
+      line-height: 1;
+      margin: 0;
+      color: #00c0f4;
+      font-size: 32px;
+      font-weight: 700;
+      padding-bottom: 15px; }
+    .main-form .form-title p {
+      margin: 0;
+      text-transform: uppercase;
+      color: white;
+      font-size: 12px;
+      font-weight: 700; }
+  .main-form .form-wrapper {
+    position: relative;
+    padding-bottom: 125px; }
+    .main-form .form-wrapper .form-title-inner {
+      color: white;
+      line-height: 1;
+      padding-bottom: 30px; }
+      .main-form .form-wrapper .form-title-inner h2 {
+        font-weight: 400;
+        font-size: 32px;
+        margin: 0;
+        padding-bottom: 25px; }
+        .main-form .form-wrapper .form-title-inner h2 span {
+          font-weight: 700; }
+      .main-form .form-wrapper .form-title-inner p {
+        font-size: 16px;
+        margin: 0; }
+    .main-form .form-wrapper .input-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .main-form .form-wrapper .input-wrapper .input-container {
+        position: relative;
+        z-index: 3;
+        height: 76px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        .main-form .form-wrapper .input-wrapper .input-container label {
+          color: white;
+          margin-bottom: 10px; }
+        .main-form .form-wrapper .input-wrapper .input-container select, .main-form .form-wrapper .input-wrapper .input-container input {
+          height: 40px;
+          font-family: 'Open Sans', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          color: #555555; }
+        .main-form .form-wrapper .input-wrapper .input-container select {
+          width: 120px;
+          padding-left: 50px; }
+        .main-form .form-wrapper .input-wrapper .input-container .date {
+          width: 140px;
+          padding-left: 30px;
+          height: 40px;
+          border: none; }
+        .main-form .form-wrapper .input-wrapper .input-container .time {
+          width: 120px;
+          padding-left: 22px;
+          height: 40px;
+          border: none; }
+        .main-form .form-wrapper .input-wrapper .input-container input[type=time]::-webkit-inner-spin-button {
+          padding-top: 20px; }
+        .main-form .form-wrapper .input-wrapper .input-container input[type="time"]:before {
+          color: transparent;
+          background: none;
+          display: block;
+          font-family: 'FontAwesome';
+          content: '\f017';
+          /* This is the calendar icon in FontAwesome */
+          width: 15px;
+          height: 20px;
+          position: absolute;
+          top: 49px;
+          right: 30px;
+          color: #999; }
+        .main-form .form-wrapper .input-wrapper .input-container input[type=date]::-webkit-inner-spin-button {
+          -webkit-appearance: none; }
+        .main-form .form-wrapper .input-wrapper .input-container input[type="date"]::-webkit-calendar-picker-indicator {
+          color: transparent;
+          background: none;
+          z-index: 1; }
+        .main-form .form-wrapper .input-wrapper .input-container input[type="date"]:before {
+          color: transparent;
+          background: none;
+          display: block;
+          font-family: 'FontAwesome';
+          content: '\f073';
+          /* This is the calendar icon in FontAwesome */
+          width: 15px;
+          height: 20px;
+          position: absolute;
+          top: 49px;
+          right: 6px;
+          color: #999; }
+        .main-form .form-wrapper .input-wrapper .input-container .error-span {
+          z-index: -1;
+          display: block;
+          position: absolute;
+          width: calc(100% + 4px);
+          height: 44px;
+          bottom: -2px;
+          left: -2px;
+          background-color: red; }
+    .main-form .form-wrapper .buttons {
+      margin-top: 25px; }
+      .main-form .form-wrapper .buttons .check-button {
+        width: 100%;
+        height: 35px;
+        border: none;
+        outline: none;
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        background-color: #00c0f4; }
+    .main-form .form-wrapper .notes {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: white;
+      font-size: 14px;
+      letter-spacing: 0.3px; }
+      .main-form .form-wrapper .notes .reservation-error {
+        border: 2px solid #00c0f4;
+        padding: 5px; }
+      .main-form .form-wrapper .notes .reservation-number {
+        font-weight: 700; }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+button {
+  background-color: red; }
