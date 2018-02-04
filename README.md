@@ -6,6 +6,8 @@ This assignment was bootstrapped with:
 
 `npm start` will open [Reservation Form](https://github.com/romran/reservation-form) in http://localhost:3000/;
 
+All confirmed reservations could be seen in browser's console window.
+
 
  
  

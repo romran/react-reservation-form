@@ -79,7 +79,7 @@ const App = () => (
                     validate={values => {
                         const errors = {}
                         if (orders.find(o => o.date === values.date) && orders.find(o => o.time === values.time)) {
-                            errors.date = 'Choose another date/time.'
+                            errors.date = 'Choose another date or time.'
                         }
                         if (values.partySize === '>30') {
                             errors.partySize = '(800) 201-0461'
