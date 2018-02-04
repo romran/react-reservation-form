@@ -4,8 +4,6 @@ import { Field } from 'react-final-form'
 import Wizard from './Wizard'
 import today from './dateConverter';
 import { Select } from 'semantic-ui-react'
- 
-
 import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -53,7 +51,7 @@ const normalizePhone = value => {
     )}`
 }
 
- 
+
 
 const required = value => (value ? undefined : 'Required')
 
@@ -65,7 +63,7 @@ const App = () => (
             <p> PHONE: (800) 201-0461</p>
         </div>
         <Wizard
-            initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' }}
+            initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text', time: "17:05", firstName:"Rom", lastName:"Ran", phoneNumber: "(544) 654 6546", email: "rasdasda@adasd.xasd" }}
             onSubmit={onSubmit}>
             <Wizard.Page
                 validate={values => {
@@ -96,7 +94,7 @@ const App = () => (
                                 </option>
                             ))}
                         </Field>
-                       
+
                     </div>
 
                     <div className='input-container'>
@@ -108,7 +106,6 @@ const App = () => (
                             className="date"
                             required="required"
                             min={today}
-                            // placeholder="First Name"
                             validate={required}
                         />
                         <Error name="date" />
@@ -121,7 +118,6 @@ const App = () => (
                             component="input"
                             type="time"
                             className="time"
-                            // placeholder="First Name"
                             validate={required}
                         />
                         <Error name="time" />
@@ -146,85 +142,99 @@ const App = () => (
                     return errors
                 }}
             >
-                <div>
-                    <label>First Name</label>
-                    <Field
-                        name="firstName"
-                        component="input"
-                        type="text"
-                        placeholder="First Name"
-                        validate={required}
-                    />
-                    <Error name="firstName" />
-                </div>
-                <div>
-                    <label>Last Name</label>
-                    <Field
-                        name="lastName"
-                        component="input"
-                        type="text"
-                        placeholder="Last Name"
-                        validate={required}
-                    />
-                    <Error name="lastName" />
+
+
+                <div className='form-title-inner'>
+                    <h2>Table <span>Avalaible!</span></h2>
+                    <p>Complete your reservation.</p>
                 </div>
 
-                <div>
-                    <label>Email</label>
-                    <Field
-                        name="email"
-                        component="input"
-                        type="email"
-                        placeholder="Email"
-                    />
-                    <Error name="email" />
-                </div>
-                <div>
-                    <label>Phone Type</label>
-                    <Field name="phoneType" component="select">
-                        <option value="Cell">Cell</option>
-                        <option value="Mobile">Mobile</option>
-                    </Field>
-                    <Error name="phoneType" />
-                </div>
+                <div className='input-wrapper names-email'>
+                    <div className='input-container'>
+                        <label>First Name</label>
+                        <Field
+                            name="firstName"
+                            component="input"
+                            type="text"
+                            placeholder="First Name"
+                            validate={required}
+                        />
+                        <Error name="firstName" />
+                    </div>
+                    <div className='input-container'>
+                        <label>Last Name</label>
+                        <Field
+                            name="lastName"
+                            component="input"
+                            type="text"
+                            placeholder="Last Name"
+                            validate={required}
+                        />
+                        <Error name="lastName" />
+                    </div>
 
-                <div>
-                    <label>Phone Number</label>
-                    <Field
-                        name="phoneNumber"
-                        component="input"
-                        type="text"
-                        parse={normalizePhone}
-                        placeholder="(000) 000 0000"
-                        validate={required}
-                    />
-                    <Error name="phoneNumber" />
+                    <div className='input-container'>
+                        <label>Email</label>
+                        <Field
+                            name="email"
+                            component="input"
+                            type="email"
+                            placeholder="Email"
+                        />
+                        <Error name="email" />
+                    </div>
                 </div>
+                <div className='input-wrapper phone-notif'>
+                    <div className='input-container'>
+                        <label>Phone Type</label>
+                        <Field name="phoneType" component="select">
+                            <option value="Cell">Cell</option>
+                            <option value="Mobile">Mobile</option>
+                        </Field>
+                        <Error name="phoneType" />
+                    </div>
 
-                <div>
-                    <label>Notification</label>
-                    <Field name="notification" component="select">
-                        <option value="text">Text</option>
-                        <option value="email">Email</option>
-                    </Field>
-                    <Error name="notification" />
-                </div>
+                    <div className='input-container'>
+                        <label>Phone Number</label>
+                        <Field
+                            name="phoneNumber"
+                            component="input"
+                            type="text"
+                            parse={normalizePhone}
+                            placeholder="(000) 000 0000"
+                            validate={required}
+                        />
+                        <Error name="phoneNumber" />
+                    </div>
 
-                <div>
-                    <label>Special Requirements</label>
-                    <Field
-                        name="specialRequirements"
-                        component="input"
-                        type="textField"
-                    />
+                    <div className='input-container'>
+                        <label>Notification</label>
+                        <Field name="notification" component="select">
+                            <option value="text">Text</option>
+                            <option value="email">Email</option>
+                        </Field>
+                        <Error name="notification" />
+                    </div>
+
+                    <div className='input-container'>
+                        <label>Special Requirements</label>
+                        <Field
+                            name="specialRequirements"
+                            component="textarea"
+                            //  type="textarea"
+                            rows="num" cols="num"
+
+                        />
+                    </div>
                 </div>
 
             </Wizard.Page>
 
 
             <Wizard.Page>
-                <div>
-                    <h1>Results</h1>
+                <div className='form-title-inner'>
+                    <h2>Reservation <span>Confirmer</span>!</h2>
+                    <p>Reservation Details:</p>
                 </div>
             </Wizard.Page>
 

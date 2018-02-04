@@ -89,26 +89,84 @@ export default class Wizard extends React.Component {
               {activePage}
               <div className="buttons">
                 {page === 1 && (
-                  <button type="button" onClick={this.previous}>
-                    « Previous
+                  <div className="res-details" >
+
+                    <div className="res-details-block">
+                      <p>Date</p>
+                      <p>{values.date}</p>
+                    </div>
+
+                    <div className="res-details-block">
+                      <p>Time</p>
+                      <p>{values.time}</p>
+                    </div>
+
+                    <div className="res-details-block icon">
+                      <p>Party of</p>
+                      <p>{values.partySize}</p>
+                    </div>
+
+                    <button type="button" className="edit-button" onClick={this.previous}>
+                      Edit
                 </button>
+                  </div>
 
                 )}
                 {page === 1 && (
-                  <button type="submit" disabled={submitting}>
-                    Submit
+                  <button type="submit" className="check-button confirm" disabled={submitting}>
+                    Confirm Reservation
                 </button>
                 )}
 
 
                 {page === 0 && <button className='check-button' type="submit">Check Availability</button>}
                 {isLastPage && (
-                  <button onClick={reset} type="submit">
-                    Home
-                </button>
-                )}
 
-                {isLastPage && (<pre>{JSON.stringify(values, 0, 2)}</pre>)}
+                  <div>
+                    <div className="res-details home" >
+
+
+                      <div className="res-details-block icon">
+                        <p>Party of</p>
+                        <p>{values.partySize}</p>
+                      </div>
+
+                      <div className="res-details-block">
+                        <p>Date</p>
+                        <p>{values.date}</p>
+                      </div>
+
+                      <div className="res-details-block">
+                        <p>Time</p>
+                        <p>{values.time}</p>
+                      </div>
+
+                    </div>
+
+                    <div className="res-details-info"><p>Your information:</p></div>
+
+
+                    <div className="res-details confirm" >
+                      <div className="res-details-block">
+                        <p>{values.firstName} {values.lastName}</p>
+                        <p>{values.email}</p>
+                        <p>{values.phoneNumber}</p>
+                      </div>
+
+                      <div className="res-details-block">
+                        <p>Special Requirements:</p>
+                        <p>{values.specialRequirements}</p>
+                      </div>
+
+                    </div>
+
+                    <button className="check-button home" onClick={reset} type="submit">
+                      Home
+                </button>
+
+
+                  </div>
+                )}
 
               </div>
 
