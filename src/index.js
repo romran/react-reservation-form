@@ -149,7 +149,7 @@ const App = () => (
                 >
 
                     <div className='form-title-inner'>
-                        <h2>Table <span>Avalaible!</span></h2>
+                        <h2>Table <span>Avalaible</span>!</h2>
                         <p>Complete your reservation.</p>
                     </div>
 
@@ -241,6 +241,8 @@ const App = () => (
                 </Wizard.Page>
             </Wizard>
         </div>
+        <div id="copyright">Powered by <span>Harbortouch.</span>®</div>
+
     </div>
 )
 

@@ -146,8 +146,8 @@ body {
           border: 1px solid #cccccc; }
           @media only screen and (max-width: 430px) {
             .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"] {
-              width: 113px;
-              padding: 0; } }
+              width: 108px;
+              padding-left: 5px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"] {
           color: #555555;
           width: 120px;
@@ -155,8 +155,8 @@ body {
           border: 1px solid #cccccc; }
           @media only screen and (max-width: 430px) {
             .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"] {
-              width: 113px;
-              padding: 0; } }
+              width: 103px;
+              padding-left: 10px; } }
         @media only screen and (max-width: 430px) {
           .main-form-inner .form-wrapper .input-wrapper .input-container .time {
             width: 115px; } }
@@ -175,6 +175,9 @@ body {
           top: 49px;
           right: 26px;
           color: #555555; }
+          @media only screen and (max-width: 430px) {
+            .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"]:before {
+              right: 16px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type=date]::-webkit-inner-spin-button {
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -200,10 +203,15 @@ body {
           background-color: white;
           position: absolute;
           margin-top: 2px;
-          padding: 10px 8px 0 0;
+          padding: 11px 8px 0 0;
           top: calc(100% - 40px);
           right: 1px;
           color: #555555; }
+          @media only screen and (max-width: 430px) {
+            .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"]:before {
+              padding: 11px 0 0 0;
+              right: 6px;
+              width: 12px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container .error-span {
           z-index: -1;
           display: block;
@@ -225,6 +233,9 @@ body {
         padding-top: 20px; }
         .main-form-inner .form-wrapper .input-wrapper.phone-notif .input-container:nth-of-type(2) {
           width: 145px; }
+          @media only screen and (max-width: 430px) {
+            .main-form-inner .form-wrapper .input-wrapper.phone-notif .input-container:nth-of-type(2) {
+              width: 115px; } }
         .main-form-inner .form-wrapper .input-wrapper.phone-notif .input-container:nth-of-type(4) {
           padding-top: 20px;
           height: auto;
