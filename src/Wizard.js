@@ -37,8 +37,7 @@ export default class Wizard extends React.Component {
       page: Math.max(state.page - 2, 0),
     }))
 
-
-  /**
+ /**
  * NOTE: Both validate and handleSubmit switching are implemented
  * here because 🏁 Redux Final Form does not accept changes to those
  * functions once the form has been defined.
