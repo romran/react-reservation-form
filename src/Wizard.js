@@ -53,8 +53,7 @@ export default class Wizard extends React.Component {
   handleSubmit = values => {
     const { onSubmit } = this.props
     const { page } = this.state
-    // const isLastPage = page === React.Children.count(children) - 1
-     if (page === 1) {
+      if (page === 1) {
       this.last();
       return onSubmit(values)
     }
