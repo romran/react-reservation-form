@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'react-final-form'
 
-
-
 export default class Wizard extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired
@@ -21,7 +19,6 @@ export default class Wizard extends React.Component {
   next = values =>
     this.setState(state => ({
       page: Math.min(state.page + 1, this.props.children.length - 1),
-      // values
     }))
 
   previous = () =>
@@ -55,11 +52,10 @@ export default class Wizard extends React.Component {
   }
 
   handleSubmit = values => {
-    const { children, onSubmit } = this.props
+    const { onSubmit } = this.props
     const { page } = this.state
     // const isLastPage = page === React.Children.count(children) - 1
-    //console.log(page);
-    if (page === 1) {
+     if (page === 1) {
       this.last();
       return onSubmit(values)
     }
@@ -118,13 +114,11 @@ export default class Wizard extends React.Component {
                 </button>
                 )}
 
-
                 {page === 0 && <button className='check-button' type="submit">Check Availability</button>}
                 {isLastPage && (
 
                   <div>
                     <div className="res-details home" >
-
 
                       <div className="res-details-block icon">
                         <p>Party of</p>
@@ -145,7 +139,6 @@ export default class Wizard extends React.Component {
 
                     <div className="res-details-info"><p>Your information:</p></div>
 
-
                     <div className="res-details confirm" >
                       <div className="res-details-block">
                         <p>{values.firstName} {values.lastName}</p>
@@ -163,15 +156,9 @@ export default class Wizard extends React.Component {
                     <button className="check-button home" onClick={reset} type="submit">
                       Home
                 </button>
-
-
                   </div>
                 )}
-
               </div>
-
-
-              {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
 
             </form>
           )}

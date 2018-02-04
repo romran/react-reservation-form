@@ -1,38 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,900');
 
 $blue: #00c0f4;
+$hover-blue: #4dd8ff;
+$light-grey: #cccccc;
+$dark-grey: #555555;
+$red:#f81717;
+
 
 body {
     font-family: 'Open Sans', sans-serif;
-    margin: 0
+    margin: 0; width: 100%; height: calc(100% + 50px);
+    position: relative;
+    overflow-x: hidden !important;
 }
 
 #root {
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('assets/images/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat; 
+    height: 100%;
+    overflow-x: hidden !important;
+
 }
 
 #copyright {
     color: white;
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 20px;
+    left: 20px;
     span {
         font-weight: 700;
     }
 }
 
+.main-form-container {
+    width: 100%; height: 100vh;
+    background-image: url('assets/images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    @media only screen and (max-height: 1015px) {
+        height: 1015px;
+     } 
 
-.main-form {
+}
+.main-form-inner {
     width: 430px;
-    margin: 20px;
+    padding: 120px 20px 20px 20px;
     height: auto;
+    @media only screen and (max-width: 430px) {
+        padding: 30px 10px 10px 10px;
+        width: 100%;
+        overflow-x: none;
+    } 
     .form-title {
         margin-bottom: 60px;
         h1 {
@@ -53,7 +74,7 @@ body {
     }
     .form-wrapper {
         position: relative;
-        padding-bottom: 125px;
+        padding-bottom: 30px;
         .form-title-inner {
             color: white;
             line-height: 1;
@@ -80,34 +101,96 @@ body {
             .input-container {
                 position: relative;
                 z-index: 3;
+                @media only screen and (max-width: 430px) {
+                    width: 115px;
+                }
                 label {
                     color: white;
                     margin-bottom: 10px;
-                }               
-                select,input {
-                   height: 40px; 
+                } 
+ 
+                input {
+                   height: 38px; 
                    font-family: 'Open Sans', sans-serif;
+                   color: $dark-grey;
                    font-size: 14px;
                    font-weight: 400;
-                   border: none;
+                   border: 1px solid $light-grey;
                    padding: 0 0 0 10px;
-                   &::-moz-placeholder {
-                       padding-left: 10px;
-                       color: #555555;
-                   }
+                    &::-moz-placeholder {
+                        padding-left: 10px;
+                        color: $dark-grey;
+                    }
+                    &::-webkit-placeholder {
+                        padding-left: 10px;
+                        color: $dark-grey;
+                    }
                 }
-                select {
-                     width: 120px;
+
+                .select {
+                    position: relative;
+                    display: block;
                  }
-                .date {
-                    width: 140px;
-                     height: 40px;
-                    border: none;
-                }
-                .time {
+
+                select {
+                    color: $dark-grey;
+                    padding: 0 0 0 10px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    border: 1px solid $light-grey;
+                     height: 40px;    
                     width: 120px;
-                     height: 40px;
-                    border: none;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    @media only screen and (max-width: 430px) {
+                        width: 113px;
+                    }
+                   }
+
+                   .party-size {
+                    padding: 0 0 0 20px; 
+                   }
+
+                   .select:before {
+                    content:"\f078";
+                        font-family: FontAwesome;
+                        color: $dark-grey;
+                        position: absolute; right: 8px; bottom: -45px;
+                        background:transparent;
+                        z-index: 5;
+                        text-align: center;
+                        width: 20px;
+                        height: 20px;      
+                        pointer-events: none;
+                        box-sizing: border-box;   
+                     }
+
+                input[type="date"] {
+                    color: $dark-grey;
+                    width: 140px;
+                    height: 38px;
+                    border: 1px solid $light-grey;
+                    @media only screen and (max-width: 430px) {
+                        width: 113px;
+                        padding: 0;
+                    }
+                   
+                }
+                input[type="time"] {
+                    color: $dark-grey;
+                    width: 120px;
+                     height: 38px;
+                     border: 1px solid $light-grey;
+                     @media only screen and (max-width: 430px) {
+                        width: 113px;
+                        padding: 0;
+                    }
+                }
+
+                .time {
+                    @media only screen and (max-width: 430px) {
+                        width: 115px;
+                    }
                 }
 
                 input[type=time]::-webkit-inner-spin-button{
@@ -126,13 +209,23 @@ body {
                     height: 20px;
                     position: absolute;
                     top: 49px;
-                    right: 30px;
-                    color: #999;
+                    right: 26px;
+                    color:$dark-grey;
                   }
 
 
                 input[type=date]::-webkit-inner-spin-button {
                     -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    display: none;
+                }
+
+                input[type=date]::-webkit-clear-button{
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    display: none;
                 }
 
                 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -147,13 +240,16 @@ body {
                     display: block;
                     font-family: 'FontAwesome';
                     content: '\f073';
-                    /* This is the calendar icon in FontAwesome */
-                    width: 15px;
+                     width: 20px;
                     height: 20px;
+                   // z-index: 3;
+                    background-color: white;
                     position: absolute;
-                    top: 49px;
-                    right: 6px;
-                    color: #999;
+                    margin-top: 2px;
+                    padding: 10px 8px 0 0  ;
+                    top: calc(100% - 40px);
+                    right: 1px;
+                    color: $dark-grey;
                   }
 
                 .error-span {
@@ -164,9 +260,8 @@ body {
                     height: 44px;
                     bottom: -2px;
                     left: -2px; 
-                    background-color: red;
-                  //  border: 2px solid red;
-
+                    background-color:$red;
+ 
                 }
 
                 height: 76px;
@@ -196,13 +291,13 @@ body {
                     width: 100%;
                     textarea {
                         padding: 0;
-                        border: 0;
-                        width: calc(100% - 20px);
+                        border: 1px solid $light-grey;
+                        width: calc(100% - 22px);
                         height: 80px;
                         resize: none;
                         font-family: 'Open Sans', sans-serif;
                         padding: 10px;
-                        color: #555555;
+                        color: $dark-grey;
                         font-size: 14px;
                     }                     
                 }
@@ -220,11 +315,15 @@ body {
                 font-size: 14px;
                 font-weight: 700;
                 background-color: $blue;
+                transition: all .3s ease;
                 &.confirm {
                     margin-top: 25px;
                 }
                 &.home {
                     margin-top: 25px;
+                }
+                &:hover {
+                    background-color: $hover-blue;
                 }    
             }
 
@@ -288,7 +387,6 @@ body {
                             }
                         }
                     }
-
                 }
                 .edit-button {
                     padding: 0;
@@ -301,6 +399,10 @@ body {
                     font-size: 14px;
                     font-weight: 900;
                     font-family: 'Open Sans', sans-serif;
+                    transition: all .3s ease;
+                    &:hover {
+                        background-color: $blue;
+                    }
                 }
                 &.confirm {
                     flex-direction: column;
@@ -312,6 +414,12 @@ body {
                             p {
                                 &:nth-of-type(1) {
                                     font-weight: 700;
+                                }
+                                &:nth-of-type(2) {
+                                    font-weight: 400;
+                                }
+                                &:nth-of-type(3) {
+                                    font-weight: 400;
                                 }
                             }
                         }
@@ -344,7 +452,7 @@ body {
         }
         .notes {
             position: absolute;
-            bottom: 0;
+            top: 100%;
             left: 0;
             color: white;
             font-size: 14px;
@@ -352,6 +460,9 @@ body {
            .reservation-error{
                border: 2px solid $blue;
                padding: 5px;
+               &.red {
+                border: 2px solid red !important;
+               }
             }
              .reservation-number {
                 font-weight: 900;
