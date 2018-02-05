@@ -111,6 +111,7 @@ body {
           position: relative;
           display: block; }
         .main-form-inner .form-wrapper .input-wrapper .input-container select {
+          background-color: white;
           color: #555555;
           padding: 0 0 0 10px;
           font-size: 14px;
@@ -141,6 +142,7 @@ body {
           box-sizing: border-box; }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"] {
           color: #555555;
+          background-color: white;
           width: 140px;
           height: 38px;
           border: 1px solid #cccccc; }
@@ -150,6 +152,7 @@ body {
               padding-left: 5px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"] {
           color: #555555;
+          background-color: white;
           width: 120px;
           height: 38px;
           border: 1px solid #cccccc; }
@@ -168,7 +171,6 @@ body {
           display: block;
           font-family: 'FontAwesome';
           content: '\f017';
-          /* This is the calendar icon in FontAwesome */
           width: 15px;
           height: 20px;
           position: absolute;
@@ -182,7 +184,8 @@ body {
           -webkit-appearance: none;
           -moz-appearance: none;
           appearance: none;
-          display: none; }
+          display: none;
+          padding-top: 20px; }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type=date]::-webkit-clear-button {
           -webkit-appearance: none;
           -moz-appearance: none;
