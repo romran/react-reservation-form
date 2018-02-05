@@ -6,7 +6,7 @@ import today from './dateConverter';
 import './App.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const size = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, '>30']
+const size = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, '31+']
 
 let orders = [];
 
@@ -81,7 +81,7 @@ const App = () => (
                         if (orders.find(o => o.date === values.date) && orders.find(o => o.time === values.time)) {
                             errors.date = 'Choose another date or time.'
                         }
-                        if (values.partySize === '>30') {
+                        if (values.partySize === '31+') {
                             errors.partySize = '(800) 201-0461'
                         }
                          
