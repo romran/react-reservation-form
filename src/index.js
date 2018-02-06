@@ -60,6 +60,7 @@ const normalizePhone = value => {
     )}`
 }
 
+ 
 
 
 const required = value => (value ? undefined : 'Required')
@@ -73,7 +74,7 @@ const App = () => (
                 <p> PHONE: (800) 201-0461</p>
             </div>
             <Wizard
-                initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' }}
+                initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' , time: '' }}
                 onSubmit={onSubmit}>
                 <Wizard.Page
                     validate={values => {
@@ -113,6 +114,7 @@ const App = () => (
                                 component="input"
                                 type="date"
                                 className="date"
+                                //parse={normalizeDate}
                                 min={today}
                             //validate={required}
                             />
@@ -203,7 +205,7 @@ const App = () => (
                             <Field
                                 name="phoneNumber"
                                 component="input"
-                                type="text"
+                                type="tel"
                                 parse={normalizePhone}
                                 placeholder="(000) 000 0000"
                                 validate={required}
@@ -215,7 +217,7 @@ const App = () => (
                             <label className='select'>Notification</label>
                             <Field name="notification" component="select">
                                 <option value="text">Text</option>
-                                <option value="email">Email</option>
+                                <option value="email">E-mail</option>
                             </Field>
                             <Error name="notification" />
                         </div>

@@ -10,15 +10,13 @@ body {
     font-family: 'Open Sans', sans-serif;
     margin: 0; width: 100%; height: calc(100% + 50px);
     position: relative;
-    overflow-x: hidden !important;
+    overflow-x: hidden;
 }
 
 #root {
     width: 100%;
     height: 100%;
-    overflow-x: hidden !important;
-
-}
+ }
 
 #copyright {
     color: white;
@@ -46,6 +44,7 @@ body {
         height: 1015px;
      } 
      @media only screen and (max-width: 430px) {
+        height: 1050px;
         height: 900px;
      } 
 
@@ -103,11 +102,24 @@ body {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            @media only screen and (max-width: 374px) {
+                //flex-wrap: wrap;
+            }
             .input-container {
                 position: relative;
                 z-index: 3;
                 @media only screen and (max-width: 430px) {
                     width: 115px;
+                }
+                &:first-of-type {
+                    @media only screen and (max-width: 374px) {
+                        width: 24%;
+                    }
+                }
+                &:nth-of-type(3) {
+                    @media only screen and (max-width: 374px) {
+                        width: 24%;
+                    }
                 }
                 label {
                     color: white;
@@ -151,10 +163,15 @@ body {
                     @media only screen and (max-width: 430px) {
                         width: 113px;
                     }
+                   
                    }
 
                    .party-size {
                     padding: 0 0 0 20px; 
+                    @media only screen and (max-width: 374px) {
+                        padding: 0 0 0 5px;
+                        width: 100%;
+                    }
                    }
 
                    .select:before {
@@ -191,17 +208,16 @@ body {
                     height: 38px;
                     border: 1px solid $light-grey;
                      @media only screen and (max-width: 430px) {
-                        width: 103px;
+                        width: 104px;
                         padding-left: 10px;
                      }
-                }
-
-                .time {
-                    @media only screen and (max-width: 430px) {
-                        width: 115px;
+                     @media only screen and (max-width: 374px) {
+                        width: 90%;
+                        padding-left: 5px;
                     }
+                     
                 }
-
+ 
                 input[type=time]::-webkit-inner-spin-button{
                     padding-top: 20px;
                  }
@@ -218,8 +234,12 @@ body {
                     top: 49px;
                     right: 26px;
                     color:$dark-grey;
+                    background-color: white;
                     @media only screen and (max-width: 430px) {
                         right: 16px;
+                    }
+                    @media only screen and (max-width: 374px) {
+                        right: 5px;
                     }
                   }
 
@@ -265,8 +285,6 @@ body {
                     }
                   }
 
-                  
-
                 .error-span {
                     z-index: -1;
                     display: block;
@@ -297,12 +315,38 @@ body {
             &.phone-notif {
                 flex-wrap: wrap;
                 padding-top: 20px;
+
+                .input-container:nth-of-type(1) {
+                    width: 115px;
+
+                   
+
+                    @media only screen and (max-width: 374px) {
+                        width: 90px;
+                        select {
+                            width: 90px
+                        }
+                    }
+                }
+
+
                 .input-container:nth-of-type(2) {
                     width: 145px;
                     @media only screen and (max-width: 430px) {
                         width: 115px;
                     }
                 }
+
+                .input-container:nth-of-type(3) {
+                    width: 115px;
+                    @media only screen and (max-width: 374px) {
+                        width: 90px;
+                        select {
+                            width: 90px
+                        }
+                    }
+                }
+ 
                 .input-container:nth-of-type(4) {
                     padding-top: 20px;
                     height: auto;
@@ -420,6 +464,9 @@ body {
                     transition: all .3s ease;
                     &:hover {
                         background-color: $blue;
+                    }
+                    @media only screen and (max-width: 374px) {
+                        width: 50px;
                     }
                 }
                 &.confirm {

@@ -37,11 +37,11 @@ export default class Wizard extends React.Component {
       page: Math.max(state.page - 2, 0),
     }))
 
- /**
- * NOTE: Both validate and handleSubmit switching are implemented
- * here because 🏁 Redux Final Form does not accept changes to those
- * functions once the form has been defined.
- */
+  /**
+  * NOTE: Both validate and handleSubmit switching are implemented
+  * here because 🏁 Redux Final Form does not accept changes to those
+  * functions once the form has been defined.
+  */
 
   validate = values => {
     const activePage = React.Children.toArray(this.props.children)[
@@ -50,10 +50,11 @@ export default class Wizard extends React.Component {
     return activePage.props.validate ? activePage.props.validate(values) : {}
   }
 
+
   handleSubmit = values => {
     const { onSubmit } = this.props
     const { page } = this.state
-      if (page === 1) {
+    if (page === 1) {
       this.last();
       return onSubmit(values)
     }
@@ -70,14 +71,16 @@ export default class Wizard extends React.Component {
     const { page, values } = this.state
     const activePage = React.Children.toArray(children)[page]
     const isLastPage = page === React.Children.count(children) - 1
+
     return (
       <div className='form-wrapper'>
         <Form
           initialValues={values}
           validate={this.validate}
+          format={this.format}
           onSubmit={this.handleSubmit}
         >
-          {({ handleSubmit, reset, submitting, values }) => (
+          {({ handleSubmit, reset, submitting, values, format }) => (
             <form onSubmit={handleSubmit}
             >
               {activePage}
@@ -87,12 +90,12 @@ export default class Wizard extends React.Component {
 
                     <div className="res-details-block">
                       <p>Date</p>
-                      <p>{values.date}</p>
+                      <p>{values.date.split('-')[1]}/{values.date.split('-')[2]}/{values.date.split('-')[0]}</p>
                     </div>
 
                     <div className="res-details-block">
                       <p>Time</p>
-                      <p>{values.time}</p>
+                      <p>{values.time.split(':')[0] % 12 || 12}:{values.time.split(':')[1]} {(values.time.split(':')[0] < 12 || values.time.split(':')[0] === 24) ? "AM" : "PM"}</p>
                     </div>
 
                     <div className="res-details-block icon">
@@ -125,12 +128,12 @@ export default class Wizard extends React.Component {
 
                       <div className="res-details-block">
                         <p>Date</p>
-                        <p>{values.date}</p>
+                        <p>{values.date.split('-')[1]}/{values.date.split('-')[2]}/{values.date.split('-')[0]}</p>
                       </div>
 
                       <div className="res-details-block">
                         <p>Time</p>
-                        <p>{values.time}</p>
+                        <p>{values.time.split(':')[0] % 12 || 12}:{values.time.split(':')[1]} {(values.time.split(':')[0] < 12 || values.time.split(':')[0] === 24) ? "AM" : "PM"}</p>
                       </div>
 
                     </div>
