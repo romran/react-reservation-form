@@ -19,6 +19,10 @@ body {
   left: 20px; }
   #copyright span {
     font-weight: 700; }
+  @media only screen and (max-width: 430px) {
+    #copyright {
+      bottom: 10px;
+      left: 10px; } }
 
 .main-form-container {
   width: 100%;
@@ -33,6 +37,9 @@ body {
   @media only screen and (max-height: 1015px) {
     .main-form-container {
       height: 1015px; } }
+  @media only screen and (max-width: 430px) {
+    .main-form-container {
+      height: 900px; } }
 
 .main-form-inner {
   width: 430px;
@@ -64,12 +71,12 @@ body {
     .main-form-inner .form-wrapper .form-title-inner {
       color: white;
       line-height: 1;
-      padding-bottom: 30px; }
+      padding-bottom: 20px; }
       .main-form-inner .form-wrapper .form-title-inner h2 {
         font-weight: 400;
         font-size: 32px;
         margin: 0;
-        padding-bottom: 25px; }
+        padding-bottom: 20px; }
         .main-form-inner .form-wrapper .form-title-inner h2 span {
           font-weight: 700; }
       .main-form-inner .form-wrapper .form-title-inner p {

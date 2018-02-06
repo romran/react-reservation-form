@@ -28,6 +28,9 @@ body {
     span {
         font-weight: 700;
     }
+    @media only screen and (max-width: 430px) {
+        bottom: 10px; left: 10px;
+    }
 }
 
 .main-form-container {
@@ -41,6 +44,9 @@ body {
     align-items: flex-start;
     @media only screen and (max-height: 1015px) {
         height: 1015px;
+     } 
+     @media only screen and (max-width: 430px) {
+        height: 900px;
      } 
 
 }
@@ -77,12 +83,12 @@ body {
         .form-title-inner {
             color: white;
             line-height: 1;
-            padding-bottom: 30px;
+            padding-bottom: 20px;
             h2 {
                 font-weight: 400;
                 font-size: 32px;
                 margin: 0;
-                padding-bottom: 25px;
+                padding-bottom: 20px;
                 span {
                     font-weight: 700;
                 }
