@@ -60,7 +60,7 @@ const normalizePhone = value => {
     )}`
 }
 
- 
+
 
 
 const required = value => (value ? undefined : 'Required')
@@ -74,7 +74,7 @@ const App = () => (
                 <p> PHONE: (800) 201-0461</p>
             </div>
             <Wizard
-                initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text' , time: '' }}
+                initialValues={{ date: today, partySize: 2, phoneType: 'Cell', notification: 'Text', time: '' }}
                 onSubmit={onSubmit}>
                 <Wizard.Page
                     validate={values => {
@@ -85,7 +85,7 @@ const App = () => (
                         if (values.partySize === '31+') {
                             errors.partySize = '(800) 201-0461'
                         }
-                         
+
                         return errors
                     }}
                 >
