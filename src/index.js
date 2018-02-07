@@ -47,7 +47,6 @@ const DateError = ({ name }) => (
     />
 )
 
-
 const normalizePhone = value => {
     if (!value) return value
     const onlyNums = value.replace(/[^\d]/g, '')
@@ -59,9 +58,6 @@ const normalizePhone = value => {
         10
     )}`
 }
-
-
-
 
 const required = value => (value ? undefined : 'Required')
 
@@ -85,7 +81,6 @@ const App = () => (
                         if (values.partySize === '31+') {
                             errors.partySize = '(800) 201-0461'
                         }
-
                         return errors
                     }}
                 >
@@ -114,9 +109,7 @@ const App = () => (
                                 component="input"
                                 type="date"
                                 className="date"
-                                //parse={normalizeDate}
                                 min={today}
-                            //validate={required}
                             />
                             <Error name="date" />
                         </div>
@@ -140,15 +133,7 @@ const App = () => (
                     </div>
 
                 </Wizard.Page>
-                <Wizard.Page
-                    validate={values => {
-                        //const errors = {}
-                        /* if (!values.email) {
-                            errors.email = 'Required'
-                        }
-                        return errors */
-                    }}
-                >
+                <Wizard.Page>
 
                     <div className='form-title-inner'>
                         <h2>Table <span>Avalaible</span>!</h2>
