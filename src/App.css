@@ -65,6 +65,9 @@ body {
       color: white;
       font-size: 12px;
       font-weight: 700; }
+      .main-form-inner .form-title p a {
+        color: white;
+        text-decoration: none; }
   .main-form-inner .form-wrapper {
     position: relative;
     padding-bottom: 30px; }
@@ -102,7 +105,7 @@ body {
             width: 24%; } }
         @media only screen and (max-width: 374px) {
           .main-form-inner .form-wrapper .input-wrapper .input-container:nth-of-type(3) {
-            width: 24%; } }
+            width: 95px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container label {
           color: white;
           margin-bottom: 10px; }
@@ -131,7 +134,7 @@ body {
           font-weight: 400;
           border: 1px solid #cccccc;
           height: 40px;
-          width: 120px;
+          width: 115px;
           -webkit-appearance: none;
           -moz-appearance: none; }
           @media only screen and (max-width: 430px) {
@@ -141,20 +144,16 @@ body {
           padding: 0 0 0 20px; }
           @media only screen and (max-width: 374px) {
             .main-form-inner .form-wrapper .input-wrapper .input-container .party-size {
-              padding: 0 0 0 5px;
               width: 100%; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container .select:before {
-          content: "\f078";
-          font-family: FontAwesome;
-          color: #555555;
+          content: url("assets/icons/chevron-arrow.svg");
           position: absolute;
           right: 8px;
-          bottom: -45px;
-          background: transparent;
+          bottom: -38px;
           z-index: 5;
           text-align: center;
-          width: 20px;
-          height: 20px;
+          width: 14px;
+          height: 14px;
           pointer-events: none;
           box-sizing: border-box; }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"] {
@@ -184,13 +183,10 @@ body {
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type=time]::-webkit-inner-spin-button {
           padding-top: 20px; }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"]:before {
-          color: transparent;
-          background: none;
           display: block;
-          font-family: 'FontAwesome';
-          content: '\f017';
-          width: 15px;
-          height: 20px;
+          content: url("assets/icons/time.svg");
+          width: 14px;
+          height: 14px;
           position: absolute;
           top: 49px;
           right: 30px;
@@ -201,7 +197,7 @@ body {
               right: 16px; } }
           @media only screen and (max-width: 374px) {
             .main-form-inner .form-wrapper .input-wrapper .input-container input[type="time"]:before {
-              right: 5px; } }
+              right: 7px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type=date]::-webkit-inner-spin-button {
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -216,23 +212,20 @@ body {
           background: none;
           z-index: 1; }
         .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"]:before {
-          color: transparent;
-          background: none;
           display: block;
-          font-family: 'FontAwesome';
-          content: '\f073';
-          width: 20px;
-          height: 20px;
+          content: url("assets/icons/calendar.svg");
+          width: 14px;
+          height: 14px;
           background-color: white;
           position: absolute;
           margin-top: 2px;
-          padding: 11px 8px 0 0;
+          padding: 10px 8px 0 0;
           top: calc(100% - 40px);
           right: 1px;
           color: #555555; }
           @media only screen and (max-width: 430px) {
             .main-form-inner .form-wrapper .input-wrapper .input-container input[type="date"]:before {
-              padding: 11px 0 0 0;
+              padding: 10px 0 0 0;
               right: 6px;
               width: 12px; } }
         .main-form-inner .form-wrapper .input-wrapper .input-container .error-span {
@@ -343,15 +336,12 @@ body {
         .main-form-inner .form-wrapper .buttons .res-details .res-details-block.icon p:last-of-type {
           padding-left: 20px; }
           .main-form-inner .form-wrapper .buttons .res-details .res-details-block.icon p:last-of-type:before {
-            color: transparent;
-            background: none;
             display: block;
-            font-family: 'FontAwesome';
-            content: '\f007';
-            width: 15px;
-            height: 17px;
+            content: url("assets/icons/user-shape.svg");
+            width: 13px;
+            height: 13px;
             position: absolute;
-            bottom: 0px;
+            bottom: 5px;
             left: 0px;
             color: white; }
       .main-form-inner .form-wrapper .buttons .res-details .edit-button {
@@ -407,7 +397,28 @@ body {
       letter-spacing: 0.3px; }
       .main-form-inner .form-wrapper .notes .reservation-error {
         border: 2px solid #00c0f4;
-        padding: 5px; }
+        padding: 5px;
+        position: relative; }
+        .main-form-inner .form-wrapper .notes .reservation-error a {
+          text-decoration: none;
+          color: white; }
+          .main-form-inner .form-wrapper .notes .reservation-error a::before {
+            content: 'CALL';
+            letter-spacing: 5px;
+            font-size: 22px;
+            opacity: 0;
+            line-height: 48px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #00c0f4;
+            transition: all .4s ease-in-out;
+            font-weight: 700; }
+          .main-form-inner .form-wrapper .notes .reservation-error a:hover::before {
+            opacity: 1; }
         .main-form-inner .form-wrapper .notes .reservation-error.red {
           border: 2px solid red !important; }
       .main-form-inner .form-wrapper .notes .reservation-number {

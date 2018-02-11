@@ -73,58 +73,23 @@ export default class Wizard extends React.Component {
     const isLastPage = page === React.Children.count(children) - 1
 
     return (
-      <div className='form-wrapper'>
-        <Form
-          initialValues={values}
-          validate={this.validate}
-          format={this.format}
-          onSubmit={this.handleSubmit}
-        >
-          {({ handleSubmit, reset, submitting, values, format }) => (
-            <form onSubmit={handleSubmit}
-            >
-              {activePage}
-              <div className="buttons">
-                {page === 1 && (
-                  <div className="res-details" >
+      <div className='form-wrapper' >
+          <Form
+            initialValues={values}
+            validate={this.validate}
+            format={this.format}
+            onSubmit={this.handleSubmit}
+           >
 
-                    <div className="res-details-block">
-                      <p>Date</p>
-                      <p>{values.date.split('-')[1]}/{values.date.split('-')[2]}/{values.date.split('-')[0]}</p>
-                    </div>
+            {({ handleSubmit, reset, submitting, values, format }) => (
 
-                    <div className="res-details-block">
-                      <p>Time</p>
-                      <p>{values.time.split(':')[0] % 12 || 12}:{values.time.split(':')[1]} {(values.time.split(':')[0] < 12 || values.time.split(':')[0] === 24) ? "AM" : "PM"}</p>
-                    </div>
+              <form onSubmit={handleSubmit}
+              >
+                {activePage}
 
-                    <div className="res-details-block icon">
-                      <p>Party of</p>
-                      <p>{values.partySize}</p>
-                    </div>
-
-                    <button type="button" className="edit-button" onClick={this.previous}>
-                      Edit
-                </button>
-                  </div>
-
-                )}
-                {page === 1 && (
-                  <button type="submit" className="check-button confirm" disabled={submitting}>
-                    Confirm Reservation
-                </button>
-                )}
-
-                {page === 0 && <button className='check-button' type="submit">Check Availability</button>}
-                {isLastPage && (
-
-                  <div>
-                    <div className="res-details home" >
-
-                      <div className="res-details-block icon">
-                        <p>Party of</p>
-                        <p>{values.partySize}</p>
-                      </div>
+                <div className="buttons">
+                  {page === 1 && (
+                    <div className="res-details" >
 
                       <div className="res-details-block">
                         <p>Date</p>
@@ -136,35 +101,73 @@ export default class Wizard extends React.Component {
                         <p>{values.time.split(':')[0] % 12 || 12}:{values.time.split(':')[1]} {(values.time.split(':')[0] < 12 || values.time.split(':')[0] === 24) ? "AM" : "PM"}</p>
                       </div>
 
-                    </div>
-
-                    <div className="res-details-info"><p>Your information:</p></div>
-
-                    <div className="res-details confirm" >
-                      <div className="res-details-block">
-                        <p>{values.firstName} {values.lastName}</p>
-                        <p>{values.email}</p>
-                        <p>{values.phoneNumber}</p>
+                      <div className="res-details-block icon">
+                        <p>Party of</p>
+                        <p>{values.partySize}</p>
                       </div>
 
-                      <div className="res-details-block">
-                        <p>Special Requirements:</p>
-                        <p>{values.specialRequirements}</p>
-                      </div>
-
-                    </div>
-
-                    <button className="check-button home" onClick={reset} type="submit">
-                      Home
+                      <button type="button" className="edit-button" onClick={this.previous}>
+                        Edit
                 </button>
-                  </div>
-                )}
-              </div>
+                    </div>
 
-            </form>
-          )}
-        </Form>
-      </div>
+                  )}
+                  {page === 1 && (
+                    <button type="submit" className="check-button confirm" disabled={submitting}>
+                      Confirm Reservation
+                </button>
+                  )}
+
+                  {page === 0 && <button className='check-button' type="submit">Check Availability</button>}
+                  {isLastPage && (
+
+                    <div>
+                      <div className="res-details home" >
+
+                        <div className="res-details-block icon">
+                          <p>Party of</p>
+                          <p>{values.partySize}</p>
+                        </div>
+
+                        <div className="res-details-block">
+                          <p>Date</p>
+                          <p>{values.date.split('-')[1]}/{values.date.split('-')[2]}/{values.date.split('-')[0]}</p>
+                        </div>
+
+                        <div className="res-details-block">
+                          <p>Time</p>
+                          <p>{values.time.split(':')[0] % 12 || 12}:{values.time.split(':')[1]} {(values.time.split(':')[0] < 12 || values.time.split(':')[0] === 24) ? "AM" : "PM"}</p>
+                        </div>
+
+                      </div>
+
+                      <div className="res-details-info"><p>Your information:</p></div>
+
+                      <div className="res-details confirm" >
+                        <div className="res-details-block">
+                          <p>{values.firstName} {values.lastName}</p>
+                          <p>{values.email}</p>
+                          <p>{values.phoneNumber}</p>
+                        </div>
+
+                        <div className="res-details-block">
+                          <p>Special Requirements:</p>
+                          <p>{values.specialRequirements}</p>
+                        </div>
+
+                      </div>
+
+                      <button className="check-button home" onClick={reset} type="submit">
+                        Home
+                </button>
+                    </div>
+                  )}
+                </div>
+
+              </form>
+            )}
+          </Form>
+       </div>
     )
   }
 }
