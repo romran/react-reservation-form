@@ -231,8 +231,7 @@ const App = () => (
                 </Wizard>
             </div>
         </div>
-        <div id="copyright">Powered by <span>Harbortouch</span>.®</div>
-
+ 
     </div>
 )
 
